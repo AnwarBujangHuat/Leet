@@ -1,21 +1,29 @@
-//Output: "fl"
-const strs = ["flower","flow"]
-// const strs = ["flower","flow","flight"]
-const longestCommonPrefix=(strs)=>{
- let result=[];
- let firstElement=[...strs[0]]
-  for(let i=0;i<firstElement.length;i++){
-    for(let k=1;k<strs.length;k++) {
-      if(strs[k].includes(firstElement[i])){
-        result.push(firstElement[i])
-      }
+
+// const s='{)'
+// const s="{[]}"
+const s="()[]{}"
+// const s='{}'
+// const s='[]'
+// const s='()'
+const isValid = (s) => {
+  const result=true;
+  const temp=[...s]
+  const validAnswers=['{}','[]','()']
+  const stack=[temp[0]]
+  const opening=[]
+  const closing=[]
+  const validOpening=['{','[','(']
+  // const validClosing=['}',']',')']
+  for(let i=0;i<temp.length;i++){
+    if(validOpening.includes(temp[i])){
+      opening.push(temp[i])
     }
+    else(!validAnswers.includes(opening[opening.length-1]+temp[i]))
+    {console.log(opening[opening.length-1]+temp[i])}
   }
- // strs.forEach((str,ind)=>{mapping[ind]=[...str];})
-  return result
-
-}
+ return result;
+};
 
 
-const result = longestCommonPrefix(strs);
+const result = isValid(s);
 console.log(result);
