@@ -1,0 +1,13 @@
+const nums = [1,2,3,4]
+// const nums =  [1,1,1,1,1]
+// const nums = [3,1,2,10,1]
+
+const runningSum=(nums)=>{
+  for(let i=1;i<nums.length;i++)
+  {
+    nums[i]=nums[i]+nums[i-1]
+  }
+  return nums
+}
+const result = runningSum(nums);
+console.log(result);
