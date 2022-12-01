@@ -1,12 +1,31 @@
+// const root = [1,2,2,3,4,4,3]
+const root = [1,2,2,null,3,null,3]
+var isSymmetric = function(root) {
+  let que = new Array();
 
-const nusl = (matrix, target) => {
-  for(let i=0;i<matrix.length;i++){
-    const targetedArray =matrix[i]
-    if(targetedArray[targetedArray.length-1]>=target) {
-      return targetedArray.includes(target)
-    }
+  if(root==null)
+    return true;
+
+
+  que.push(root.left);
+  que.push(root.right);
+  let l,r;
+  while(que.length>0){
+    l=que.shift();
+    r=que.pop();
+    if(l==null&&r==null)
+      continue;
+    if(l==null||r==null)
+      return false;
+    if(l.val!=r.val)
+      return false;
+    que.unshift(l.right);
+    que.unshift(l.left);
+    que.push(r.left);
+    que.push(r.right);
   }
-  return false
+  return true;
 };
-const result = nusl(matrix, target);
+
+const result = isSymmetric(root);
 console.log(result);
