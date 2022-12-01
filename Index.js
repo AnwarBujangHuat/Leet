@@ -1,31 +1,23 @@
-// const root = [1,2,2,3,4,4,3]
-const root = [1,2,2,null,3,null,3]
-var isSymmetric = function(root) {
-  let que = new Array();
-
-  if(root==null)
-    return true;
-
-
-  que.push(root.left);
-  que.push(root.right);
-  let l,r;
-  while(que.length>0){
-    l=que.shift();
-    r=que.pop();
-    if(l==null&&r==null)
-      continue;
-    if(l==null||r==null)
-      return false;
-    if(l.val!=r.val)
-      return false;
-    que.unshift(l.right);
-    que.unshift(l.left);
-    que.push(r.left);
-    que.push(r.right);
+const  nums = [3,2,3]
+// const  nums = [2,2,1,1,1,2,2]
+const majorityElement =(nums)=>  {
+  nums.sort()
+  let counter=1
+  let max=0
+  let result=0
+  for(let i=0;i<nums.length;i++){
+    if(nums[i]!==nums[i+1]) {
+      if(max<counter){
+        max=counter
+        result=nums[i]
+      }
+      counter=0
+    }
+    counter++
   }
-  return true;
+  return result
+  // return Math.max(...mapCount.values);
 };
 
-const result = isSymmetric(root);
+const result = majorityElement(nums);
 console.log(result);
