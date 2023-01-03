@@ -1,23 +1,17 @@
-const  nums = [3,2,3]
-// const  nums = [2,2,1,1,1,2,2]
-const majorityElement =(nums)=>  {
-  nums.sort()
-  let counter=1
-  let max=0
+const strs = ["cba","daf","ghi"]
+// const strs = ["zyx","wvu","tsr"]
+const minDeletionSize=(strs)=>{
   let result=0
-  for(let i=0;i<nums.length;i++){
-    if(nums[i]!==nums[i+1]) {
-      if(max<counter){
-        max=counter
-        result=nums[i]
-      }
-      counter=0
+  let firstEl=[...strs[0]];
+  for(let j=0;j<firstEl.length;j++){
+    let tempChar=[]
+    for(let k=0;k<strs.length;k++){
+      tempChar.push(strs[k][j])
     }
-    counter++
+    const temp=[...tempChar].sort()
+    if(temp.join('')!==tempChar.join('')) {result = result + 1;}
   }
-  return result
-  // return Math.max(...mapCount.values);
-};
-
-const result = majorityElement(nums);
-console.log(result);
+  return result;
+}
+const result=minDeletionSize(strs)
+console.log(result)
