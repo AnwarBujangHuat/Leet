@@ -1,23 +1,15 @@
-const  nums = [3,2,3]
-// const  nums = [2,2,1,1,1,2,2]
-const majorityElement =(nums)=>  {
-  nums.sort()
-  let counter=1
-  let max=0
-  let result=0
-  for(let i=0;i<nums.length;i++){
-    if(nums[i]!==nums[i+1]) {
-      if(max<counter){
-        max=counter
-        result=nums[i]
-      }
-      counter=0
+A = [1, 3, 6, 4, 1, 2]
+// A = [1, 2, 3]
+const solution = function(A) {
+    A = A.filter(x => x >= 1).sort((a, b) => a - b)
+    let x = 1
+    for(let i = 0; i < A.length; i++) {
+        if(x < A[i]) {
+            return x
+        }
+        x = A[i] + 1
     }
-    counter++
-  }
-  return result
-  // return Math.max(...mapCount.values);
+    return x;
 };
-
-const result = majorityElement(nums);
-console.log(result);
+const result=solution(A)
+console.log(result)
